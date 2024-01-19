@@ -5,14 +5,14 @@
      <image src='../../res/images/jiudian.jpg' class='image' mode='aspectFill' />
 
      <view class='introduce'>
-          <view class='hotelName'>{{hotelName}}</view>
+          <view class='hotelName'>{{good_name}}</view>
           <view class='text'>酒店介绍</view>
      </view>
 </view>
 
 <view class='addressItem'>
      <image class='locationIcon' mode='aspectFit' src='../../res/images/ic_city_location.png' />
-     <text class='address'>{{hotelAddress}}</text>
+     <text class='address'>{{location}}</text>
      <image class='phoneIcon' mode='aspectFill' src='../../res/images/ic_hotel_phone.png' />
 </view>
 
@@ -65,4 +65,4 @@
 </view>
 <!-- 日期end  -->
 
-<template is='roomListItem' wx:for='{{roomArray}}' data="{{imageUrl:item.image,roomName:item.name,services:item.service,price:item.price,index:index,bookTap:'bookRoom'}}" />
+<template is='roomListItem' wx:for='{{roomArray}}' data="{{imageUrl:item.image,roomName:item.room_name,services:item.service,price:item.room_price,index:index,bookTap:'bookRoom'}}" />

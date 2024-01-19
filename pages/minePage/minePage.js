@@ -72,7 +72,8 @@ Page({
           wx.setStorageSync("token", res.header["Set-Cookie"])
           that.setData({
             isLogin: true,
-            avatarUrl: "http://localhost:8088" + res.data.avatar,
+            avatarUrl: "http://localhost:8088" + res
+            .data.avatar,
             userId: res.data.userId,
             permission: res.data.userPermission,
             type: res.data.userType

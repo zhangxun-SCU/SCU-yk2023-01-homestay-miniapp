@@ -1,5 +1,5 @@
 {
-     "navigationBarTitleText": "客房预订",
+     "navigationBarTitleText": "房间预订",
      "backgroundColor": "#ffffff",
      "usingComponents": {
           "clearInput": "../../components/clearInput/clearInput"

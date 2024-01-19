@@ -1,66 +1,54 @@
-// pages/specialty/specialty.js
+// pages/searchHotel/searchHotel.js
+var mHotelList = [];
+function HotelBean() {
+     var image;
+     var name;
+     var score;
+     var service;
+     var address;
+     var distance;
+     var price;
+     var test;
+}
+
 Page({
+     /**
+      * 页面的初始数据
+      */
+     data: {
+          location: '',
+          hotelArray: [],
+          loadenable: true,
+          shownavindex: 1,
+          priceL2H: true
+     },
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+     onLoad: function (options) {
+       this.getHouseList();
+     },
+     getHouseList:function(){
+       let that =this;
 
-  },
+       wx.request({
+         url: 'http://localhost:8088/houseMarket',
+         data:{"good_type":"specialty","action":"query_all"},
+         method:"POST",
+         header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
+         success:function(res){
+           console.log(res)
+          that.handleGetHouseRecordResult(res);
+        },
+        fail:function(res){
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+        }
+       })
+     },
+     handleGetHouseRecordResult:function(res){
+      
+      console.log(JSON.stringify(res.data.good_list));
+   this.setData({
+        hotelArray: res.data.good_list
+   });
+    },
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
