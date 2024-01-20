@@ -1,2 +1,30 @@
-<!--pages/specialty/specialty.wxml-->
-<text>pages/specialty/specialty.wxml</text>
+<!--pages/searchHotel/searchHotel.wxml-->
+<import src='template.wxml' />
+
+<view class='pageHeader'>
+     <view class='searchHeader'>
+
+          <clearInput style='flex:1' inputHint='搜索酒店' icon-class='common_search_img' input-class='common_search_input' confirmType='search' bind:inputListener='inputListener' bind:inputConfirm='searchEvent' />
+     </view>
+<!-- 
+     <view class='filterView'>
+          <view class='filterOptions'>
+               <text class="{{shownavindex == 1? 'filterActive' : 'filterItem'}}" bindtap='filterMenuTap' data-index='1'>推荐</text>
+               <view class="{{shownavindex == 2? 'filterActive' : 'filterItem'}}" bindtap='filterMenuTap' data-index='2'>
+                    <text>价格</text>
+                    <view class="{{priceL2H?'arrowUp':'arrowDown'}}"></view>
+               </view>
+               <text class="{{shownavindex == 3? 'filterActive' : 'filterItem'}}" bindtap='filterMenuTap' data-index='3'>好评</text>
+               <text class="{{shownavindex == 4? 'filterActive' : 'filterItem'}}" bindtap='filterMenuTap' data-index='4'>距离</text>
+          </view>
+          <view class='filterMenu' bindtap='filterTap'>
+               <text class='title'>筛选</text>
+               <image src='../../res/images/ic_hotel_filter.png' mode='aspectFit' class='icon' />
+          </view>
+     </view> -->
+</view>
+
+<view class='hotelListContent'>
+     <template is='hotelListItem' wx:for='{{hotelArray}}' data="{{imageUrl:item.image,good_name:item.good_name,score:item.score,services:item.service,address:item.address,distance:item.distance,price:item.good_price,good_id:item.good_id}}" />
+     <text  class="loadmore">没有更多了</text>
+</view>

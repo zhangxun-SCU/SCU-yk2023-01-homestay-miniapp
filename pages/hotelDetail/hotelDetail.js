@@ -49,10 +49,9 @@ Page({
           endMonth: '',
           endWeek: '',
           dayCount: 1,
-
-
-          hotelName: '',
-          hotelAddress: '',
+          good_id:'',
+          good_name: '',
+          location: '',
           roomArray: [
                {
                     image: '../../res/images/jiudian.jpg',
@@ -130,22 +129,45 @@ Page({
           this.setSearchDate();
 
           console.log(options);
-          var hotelName = options.name;
-          var address = options.address;
-          var distance = options.distance;
-          if (hotelName !== undefined) {
+          var good_id=options.good_id;
+          if (good_id !== undefined) {
                this.setData({
-                    hotelName: hotelName,
-                    hotelAddress: address + '\n距我' + distance + '公里'
+                 good_id:good_id
                });
           }
+          this.getRoomList();
      },
+     getRoomList:function(){
+      let that =this;
 
+      wx.request({
+        url: 'http://localhost:8088/getHouseDetail',
+        data:{"good_id": this.data.good_id,"good_type":"house","in_date":this.data.startDate,"out_date":this.data.endDate},
+        method:"POST",
+        header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
+        success:function(res){
+         that.handleGetHouseRecordResult(res);
+       },
+       fail:function(res){
+
+       }
+      })
+    },
+    handleGetHouseRecordResult:function(res){
+      console.log(res);
+     
+     console.log(JSON.stringify(res.data.good_list));
+  this.setData({
+    good_name:res.data.good_name,
+    location:res.data.location,
+    roomArray:res.data.room_list
+  });
+   },
      bookRoom: function (e) {
           var index = e.currentTarget.dataset.index;
           var room = this.data.roomArray[index];
           wx.navigateTo({
-               url: '../bookHotel/bookHotel?price=' + room.price + '&hotelName=' + this.data.hotelName + '&roomName=' + room.name + '&startDate=' + startDate + '&endDate=' + endDate,
+               url: '../bookHotel/bookHotel?price=' + room.room_price + '&house_id='+this.data.good_id+'&hotelName=' + this.data.good_name + '&roomName=' + room.room_name +'&room_id='+room.room_id+ '&startDate=' + startDate + '&endDate=' + endDate,
           })
      },
 
@@ -250,64 +272,12 @@ Page({
                startMonth: this.prefixInteger(startMonth, 2),
                startWeek: this.getWeekday(startWeek),
                endOfStartDate: '2020-12-31',
-
                endDate: endDate,
                endDay: this.prefixInteger(endDay, 2),
                endMonth: this.prefixInteger(endMonth, 2),
                endWeek: this.getWeekday(endWeek),
                endOfEndDate: '2020-12-31',
-
                dayCount: this.getDayCount(startDate, endDate)
           });
      },
-
-
-     /**
-      * 生命周期函数--监听页面初次渲染完成
-      */
-     onReady: function () {
-
-     },
-
-     /**
-      * 生命周期函数--监听页面显示
-      */
-     onShow: function () {
-
-     },
-
-     /**
-      * 生命周期函数--监听页面隐藏
-      */
-     onHide: function () {
-
-     },
-
-     /**
-      * 生命周期函数--监听页面卸载
-      */
-     onUnload: function () {
-
-     },
-
-     /**
-      * 页面相关事件处理函数--监听用户下拉动作
-      */
-     onPullDownRefresh: function () {
-
-     },
-
-     /**
-      * 页面上拉触底事件的处理函数
-      */
-     onReachBottom: function () {
-
-     },
-
-     /**
-      * 用户点击右上角分享
-      */
-     onShareAppMessage: function () {
-
-     }
 })

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "特产列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+       "clearInput": "../../components/clearInput/clearInput"
+  }
 }

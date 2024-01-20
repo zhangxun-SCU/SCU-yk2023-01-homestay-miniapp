@@ -1,0 +1,18 @@
+<template name="hotelListItem">
+     <navigator class='hotelListItem' url='../specialty_detail2/specialty_detail2?good_id={{good_id}}'>
+          <image class='image' mode='scaleToFill' src='../../res/images/jiudian.jpg'></image>
+          <view class='content'>
+               <view class='scoreItem'>
+                    <text class='score'>{{good_name}}</text>
+                    <text class='services'>{{services}}</text>
+               </view>
+               <view class='scoreItem'>
+               </view>
+          </view>
+
+          <view class='priceItem'>
+               <text class='price'>¥</text>
+               <text class='price'>{{price}}</text>
+          </view>
+     </navigator>
+</template>
