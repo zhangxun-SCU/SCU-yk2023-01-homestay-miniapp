@@ -11,7 +11,8 @@
     "pages/specialty/specialty",
     "pages/specialty_detail/specialty_detail",
     "pages/specialty_detail2/specialty_detail2",
-    "pages/specialtyOrderConfirm/specialtyOrderConfirm"
+    "pages/specialtyOrderConfirm/specialtyOrderConfirm",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

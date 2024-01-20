@@ -4,16 +4,31 @@
   <view class='container'>
 
     <!--头像名称-->
-    <view class="profile">
 
-      <view>        
-        <image class="avatar" src="{{avatarUrl}}"></image>
-        <view>
-        <view class="profile-item">ID：{{userId}}</view>
-        <view class="profile-item">用户类型：{{permission}}</view>
+    <image class="avatar" src="{{avatarUrl}}"></image>
+    <view>
+      <view class="profile">
+        <view class="profile-item">
+          <view class="title">
+            ID
+          </view>
+          {{userId}}
+        </view>
+        <view class="profile-item">
+          <view class="title">
+            用户类型
+          </view>
+          {{permission}}
+        </view>
+        <view class="profile-item" bindtap="toOrder">
+          <view class="title">
+            我的订单
+          </view>
+          <view class="icon-bindtap"> > </view>
         </view>
       </view>
-      
+
+
     </view>
 
   </view>
