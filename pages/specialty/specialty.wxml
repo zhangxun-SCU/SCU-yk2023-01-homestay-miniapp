@@ -5,6 +5,7 @@
      <view class='searchHeader'>
 
           <clearInput style='flex:1' inputHint='搜索酒店' icon-class='common_search_img' input-class='common_search_input' confirmType='search' bind:inputListener='inputListener' bind:inputConfirm='searchEvent' />
+          <view class='commonBtn' hover-class='commonBtnHover' bindtap='searchEvent' hover-stay-time='100'>立即搜索</view>
      </view>
 <!-- 
      <view class='filterView'>
@@ -25,6 +26,6 @@
 </view>
 
 <view class='hotelListContent'>
-     <template is='hotelListItem' wx:for='{{hotelArray}}' data="{{imageUrl:item.image,good_name:item.good_name,score:item.score,services:item.service,address:item.address,distance:item.distance,price:item.good_price,good_id:item.good_id}}" />
+     <template is='hotelListItem' wx:for='{{hotelArray}}' data="{{imageUrl:item.image,good_name:item.good_name,score:item.score,services:item.service,address:item.address,distance:item.distance,price:item.good_price,main_image:item.main_image,good_id:item.good_id}}" />
      <text  class="loadmore">没有更多了</text>
 </view>

@@ -50,5 +50,10 @@ Page({
         hotelArray: res.data.good_list
    });
     },
+    searchEvent:function(){
+      wx.navigateTo({
+        url: '../specialty_order/specialty_order',
+      })
+    }
 
 })

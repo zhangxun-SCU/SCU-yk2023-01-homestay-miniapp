@@ -1,6 +1,6 @@
 <template name="hotelListItem">
      <navigator class='hotelListItem' url='../specialty_detail2/specialty_detail2?good_id={{good_id}}'>
-          <image class='image' mode='scaleToFill' src='../../res/images/jiudian.jpg'></image>
+          <image class='image' mode='scaleToFill' src='http://localhost:8088{{main_image}}'></image>
           <view class='content'>
                <view class='scoreItem'>
                     <text class='score'>{{good_name}}</text>

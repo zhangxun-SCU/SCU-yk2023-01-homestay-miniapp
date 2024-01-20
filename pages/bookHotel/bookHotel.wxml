@@ -37,7 +37,7 @@
 <view class='payItem'>
      <view class='priceItem'>
           <text>应付：</text>
-          <text>¥{{roomPrice}}</text>
+          <text>¥{{roomPrice*dayCount}}</text>
           <text wx:if='{{isDiscount}}' class='payMsg'>(已优惠{{discount}}元)</text>
      </view>
      <view class='payBtn' bindtap="submitOrder">立即支付</view>

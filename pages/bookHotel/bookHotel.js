@@ -21,7 +21,8 @@ Page({
           house_id:"",
           room_id:"",
           num:1,
-          discount: '不选择优惠'
+          discount: '不选择优惠',
+          dayCount:1
      },
 
      /**
@@ -34,6 +35,7 @@ Page({
           roomName = options.roomName;
           startDate = options.startDate;
           endDate = options.endDate;
+
   
 
           this.setData({
@@ -44,6 +46,7 @@ Page({
                endDate: endDate,
                house_id:options.house_id,
                room_id:options.room_id,
+               dayCount:options.dayCount
           });
      },
      submitOrder:function(){

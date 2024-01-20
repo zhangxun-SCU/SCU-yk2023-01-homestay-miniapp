@@ -34,6 +34,7 @@ Page({
     good_num:0,
     good_name:'',
     good_id:'',
+    main_image:''
   },
 
   /**
@@ -78,6 +79,7 @@ this.setData({
   good_price:res.data.good_price,
   good_name:res.data.good_name,
   good_num:res.data.num,
+  main_image:res.data.main_image
 
 });
   },

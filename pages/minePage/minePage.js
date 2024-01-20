@@ -186,7 +186,7 @@ Page({
   toOrder() {
     console.log("to order")
     wx.navigateTo({
-      url: 'url',
+      url: '../specialty_order/specialty_order',
     })
   },
 
