@@ -8,7 +8,10 @@
     "pages/hotelDetail/hotelDetail",
     "pages/hotelFilter/hotelFilter",
     "pages/bookHotel/bookHotel",
-    "pages/specialty/specialty"
+    "pages/specialty/specialty",
+    "pages/specialty_detail/specialty_detail",
+    "pages/specialty_detail2/specialty_detail2",
+    "pages/specialtyOrderConfirm/specialtyOrderConfirm"
   ],
   "window": {
     "backgroundTextStyle": "light",

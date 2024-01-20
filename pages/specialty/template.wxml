@@ -1,5 +1,5 @@
 <template name="hotelListItem">
-     <navigator class='hotelListItem' url='../hotelDetail/hotelDetail?good_id={{good_id}}'>
+     <navigator class='hotelListItem' url='../specialty_detail2/specialty_detail2?good_id={{good_id}}'>
           <image class='image' mode='scaleToFill' src='../../res/images/jiudian.jpg'></image>
           <view class='content'>
                <view class='scoreItem'>

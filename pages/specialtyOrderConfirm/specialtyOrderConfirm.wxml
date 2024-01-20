@@ -1,0 +1,53 @@
+<!--pages/orderConfirm/orderConfirm.wxml-->
+<view class='oC_addr'>
+  <view bindtap='toAddr'>
+
+  </view>
+
+</view>
+
+<view class='list'>
+  <block wx:for="{{order_list}}">
+    <view class='listItem'>
+      <view class='detail'>
+        <image src='{{item.main_image}}'></image>
+        <view class='detail_r'>
+          <view class='detail_rT'>
+            <text>{{item.good_name}}</text>
+            <text>{{item.attr}}</text>
+          </view>
+          <view class='detail_rB'>
+            <text>¥{{item.good_price}}</text>
+            <view class="stepper">
+              数量：{{good_num}} 件
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='b-B coupon'>
+    <label>优惠券</label>
+    <view>
+      <text>未选中</text>
+      <image class='image' src='../../assets/icons/per_header_ic_more.png'></image>
+    </view>
+  </view>
+  <view class='b-B allActiv'>
+    <label>订单编号</label>
+    <text>{{order_id}}</text>
+    <image class='image' src='../../assets/icons/per_header_ic_more.png'></image>
+  </view>
+
+  <view class='b-B leaveMsg'>
+    <label>买家留言</label>
+    <input placeholder='50字以内（选填）' placeholder-style='color:#C5C5C5'></input>
+  </view>
+</view>
+
+<view class='bottomCont'>
+    <view class='bottomContL'>
+    共计: {{total_cost}} ¥
+    </view>
+    <view class='bottomContR' bindtap='toPay'>立即支付</view>
+  </view>

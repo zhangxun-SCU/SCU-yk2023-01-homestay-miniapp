@@ -272,20 +272,12 @@ Page({
                startMonth: this.prefixInteger(startMonth, 2),
                startWeek: this.getWeekday(startWeek),
                endOfStartDate: '2020-12-31',
-
                endDate: endDate,
                endDay: this.prefixInteger(endDay, 2),
                endMonth: this.prefixInteger(endMonth, 2),
                endWeek: this.getWeekday(endWeek),
                endOfEndDate: '2020-12-31',
-
                dayCount: this.getDayCount(startDate, endDate)
           });
      },
-
-
-
-
-
-
 })
