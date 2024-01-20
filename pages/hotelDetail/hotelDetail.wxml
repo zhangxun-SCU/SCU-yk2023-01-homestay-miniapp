@@ -38,7 +38,7 @@
 <!-- 日期计算  -->
 <view class='dateContent'>
      <view class='dateItem'>
-          <picker class='date' mode="date" value="{{startDate}}" start="{{currentDate}}" end="{{endOfStartDate}}" bindchange="startDateChange">
+          <picker class='date' mode="date" value="{{startDate}}" start="{{currentDate}}"  bindchange="startDateChange">
                <view class='date'>
                     <text class='day'>{{startDay}}</text>
                     <view class='monthWeek'>
@@ -52,7 +52,7 @@
      <text class='dayCount'>{{dayCount}}天</text>
      <view class='dateItem'>
           <view class='horizontalLine' style='width:60rpx;position:absolute;'></view>
-          <picker class='date' mode="date" value="{{endDate}}" start="{{startDate}}" end="{{endOfEndDate}}" bindchange="endDateChange">
+          <picker class='date' mode="date" value="{{endDate}}" start="{{startDate}}"  bindchange="endDateChange">
                <view class='date'>
                     <text class='day'>{{endDay}}</text>
                     <view class='monthWeek'>
@@ -65,4 +65,4 @@
 </view>
 <!-- 日期end  -->
 
-<template is='roomListItem' wx:for='{{roomArray}}' data="{{imageUrl:item.image,roomName:item.room_name,services:item.service,price:item.room_price,index:index,bookTap:'bookRoom'}}" />
+<template is='roomListItem' wx:for='{{roomArray}}' data="{{imageUrl:item.image,roomName:item.room_name,services:item.service,price:item.room_price,index:index,bookTap:'bookRoom',num:item.res_num}}" />

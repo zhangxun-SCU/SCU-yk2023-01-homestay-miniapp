@@ -1,105 +1,66 @@
-function RoomBean() {
-     var image;
-     var name;
-     var service;
-     var price;
-}
+// pages/specialty_detail/specialty_detail.js
 Page({
-     data: {
-          dayCount: 1,
-          good_id:'',
-          good_name: '',
-          location: '',
-          price:'',
-     },
-     onLoad: function (options) {
-          var good_id=options.good_id;
-          if (good_id !== undefined) {
-               this.setData({
-                 good_id:good_id
-               });
-          }
-          this.getRoomList();
-     },
-     getRoomList:function(){
-      let that =this;
-      wx.request({
-        url: 'http://localhost:8088/getSpecialtyDetail',
-        data:{"good_id": this.data.good_id,"good_type":"specialty"},
-        method:"POST",
-        header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
-        success:function(res){
-         that.handleGetHouseRecordResult(res);
-       },
-       fail:function(res){
-       }
-      })
-    },
-    handleGetHouseRecordResult:function(res){
-      console.log(res);
-  this.setData({
-    price:res.data.good_price,
-    good_name:res.data.good_name,
-    location:res.data.location,
-  });
-   },
-   submitOrder:function(){
-    var good_list={"good_id":this.data.good_id,"num":1}; 
-    good_list=JSON.stringify(good_list);
-    var order_list;
-    wx.request({
-      url: 'http://localhost:8088/specialtyMarketOrder',
-      data:{"good_list":"["+good_list+"]","action":"query_by_list","good_type":"specialty"},
-      method:"POST",
-      header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
-      success:function(res){
-        order_list=res.data.good_list;
-        wx.request({
-          url: 'http://localhost:8088/specialtyMarketOrder',
-          data:{"good_list":JSON.stringify(order_list),"action":"pay_order","good_type":"specialty"},
-          method:"POST",
-          header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
-          success:function(res){
-            if(res.data.code==0)
-            {
-              wx.showToast({
-                title: '支付成功!',
-                icon:'none',
-                duration:2000,
-                success:function(res){
-                  setTimeout(function(){
-                    console.log("success");
-            wx.navigateTo({
-              url: '../specialty/specialty?house_id=0',
-            })
-                  },2000)
-      
-                }
-              })
-            }
-            else{
-              wx.showToast({
-                title: '支付失败!余额不足!',
-                icon:'none',
-                duration:2000,
-                success:function(res){
-                  setTimeout(function(){
-                  
-             wx.navigateTo({
-               url: '../homePage/homePage.wxml',
-             });
-                  },2000)
-      
-                }
-              })
-            }
-          }
-        });
 
-     },
-     fail:function(res){
+  /**
+   * 页面的初始数据
+   */
+  data: {
 
-     }
-    })
-   }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
 })

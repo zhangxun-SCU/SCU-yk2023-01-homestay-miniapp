@@ -7,8 +7,8 @@
                <text class='roomService'>{{services}}</text>
                <view class='priceItem'>
                     <text class='price'>¥</text>
-                    <text class='price'>{{price}}</text>
-                    <text class='priceTip'>起</text>
+                    <text class='price'>{{price}}   </text>
+                    <text class='priceTip'>剩余: {{num}} 间</text>
                </view>
           </view>
 

@@ -4,14 +4,23 @@ var currentYear = new Date().getFullYear();
 var currentMonth = new Date().getMonth() + 1;
 var currentDay = new Date().getDate();
 var currentWeek = new Date().getDay();
-var currentDate = currentYear + '-' + currentMonth + '-' + currentDay;
+var mon='';
+var da='';
+if(currentMonth<10)
+{
+  var mon='0';
+}
+if(currentDay<10)
+{
+  var da='0';
+}
+var currentDate = currentYear + '-'+mon + currentMonth + '-' + da+currentDay;
 
 var startDate = '';
 var startYear;
 var startDay;
 var startMonth;
 var startWeek;
-var endOfStartDate = '2020-12-31';
 var startDayCount;
 
 var endDate = '';
@@ -19,7 +28,9 @@ var endYear;
 var endDay;
 var endMonth;
 var endWeek;
-var endOfEndDate = '2020-12-31';
+
+var startTommorrow; 
+
 
 var dayCount = 1;
 
@@ -166,9 +177,16 @@ Page({
      bookRoom: function (e) {
           var index = e.currentTarget.dataset.index;
           var room = this.data.roomArray[index];
+          if(room.res_num<1)
+          {
+
+          }
+          else{
           wx.navigateTo({
-               url: '../bookHotel/bookHotel?price=' + room.room_price + '&house_id='+this.data.good_id+'&hotelName=' + this.data.good_name + '&roomName=' + room.room_name +'&room_id='+room.room_id+ '&startDate=' + startDate + '&endDate=' + endDate,
+               url: '../bookHotel/bookHotel?price=' + room.room_price + '&house_id='+this.data.good_id+'&hotelName=' + this.data.good_name + '&roomName=' + room.room_name +'&room_id='+room.room_id+ '&startDate=' + startDate + '&endDate=' + endDate+'&dayCount='+this.data.dayCount,
           })
+          }
+
      },
 
      startDateChange: function (e) {
@@ -187,6 +205,19 @@ Page({
           }
 
           this.setSearchDate();
+          let that=this;
+          wx.request({
+            url: 'http://localhost:8088/getHouseDetail',
+            data:{"good_id": this.data.good_id,"good_type":"house","in_date":this.data.startDate,"out_date":this.data.endDate},
+            method:"POST",
+            header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
+            success:function(res){
+             that.handleGetHouseRecordResult(res);
+           },
+           fail:function(res){
+    
+           }
+          })
      },
 
      endDateChange: function (e) {
@@ -199,6 +230,19 @@ Page({
           endWeek = new Date(endYear, endMonth, endDay).getDay();
 
           this.setSearchDate();
+          let that=this;
+          wx.request({
+            url: 'http://localhost:8088/getHouseDetail',
+            data:{"good_id": this.data.good_id,"good_type":"house","in_date":this.data.startDate,"out_date":this.data.endDate},
+            method:"POST",
+            header:{"content-type":"application/x-www-form-urlencoded","x-requested-with":"XMLHttpRequest",'cookie':wx.getStorageSync("token")},
+            success:function(res){
+             that.handleGetHouseRecordResult(res);
+           },
+           fail:function(res){
+    
+           }
+          })
      },
 
      formatDate: function (date) {
@@ -240,7 +284,6 @@ Page({
 
      initEndDate: function () {
           startDayCount = new Date(startYear, startMonth, 0).getDate();
-
           if (startMonth == 12 && startDay == 31) {
                endYear = startYear + 1;
                endMonth = 1;
@@ -266,17 +309,14 @@ Page({
      setSearchDate: function () {
           this.setData({
                currentDate: currentDate,
-
                startDate: startDate,
                startDay: this.prefixInteger(startDay, 2),
                startMonth: this.prefixInteger(startMonth, 2),
                startWeek: this.getWeekday(startWeek),
-               endOfStartDate: '2020-12-31',
                endDate: endDate,
                endDay: this.prefixInteger(endDay, 2),
                endMonth: this.prefixInteger(endMonth, 2),
                endWeek: this.getWeekday(endWeek),
-               endOfEndDate: '2020-12-31',
                dayCount: this.getDayCount(startDate, endDate)
           });
      },

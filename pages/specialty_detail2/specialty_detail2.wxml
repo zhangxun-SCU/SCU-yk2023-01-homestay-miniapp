@@ -2,7 +2,7 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatoractivecolor}}">
   <block wx:for="{{imgUrls}}" wx:key='{{index}}'>
     <swiper-item>
-      <image src="{{item}}" class="slide-image" />
+      <image src="http://localhost:8088{{main_image}}" class="slide-image" />
     </swiper-item>
   </block>
 </swiper>

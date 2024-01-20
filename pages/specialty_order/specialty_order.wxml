@@ -1,0 +1,56 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                <!-- 选项一的内容 -->
+                <!-- listsAll.length == 0 -->
+                <view wx:if='{{listsAll.length == 0}}' class='noData'>
+                <image src='../../assets/icons/list_screen_ic_empty.png'></image>
+                <view  class='allData'>抱歉，没有查询到相关的订单哦</view>
+                <button class='toHome' bindtap='toHomePage'>去首页逛逛</button>
+                </view>
+                
+                <block wx:for="{{listsAll}}" wx:key="{{index}}">
+                <view class='list'>
+                <view class='listTitle'>
+                  <text>订单编号：<text class='num'>{{item.order_id}}</text></text>
+                  <text>待付款</text>
+                </view>
+
+                        <view class='listItem'>
+                            <view class='detail'> 
+                              <image src='http://localhost:8088{{item.imageurl}}'></image>
+                              <view class='detail_r'>
+                                <view class='detail_rT'>
+                                  <text>{{item.title}}</text>
+                                  <text>{{item.attr}}</text>
+                                </view>
+                                <view class='detail_rB'>
+                                  <text>¥{{item.price}}</text>
+                                  <view class="stepper">
+                                    数量：{{item.num}}
+                                  </view>
+                                </view>
+                              </view>
+                            </view>
+                        </view>
+
+                    <view class='orderTotal'>
+                      <text>总计 {{item.num}} 件商品  合计：￥{{ item.num*item.price}} </text>
+                      <view>
+                        <button bindtap='toDetail'>查看详情</button>
+                        <button>去付款</button>
+                      </view>
+                    </view>
+                  </view>
+                </block>
+
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
